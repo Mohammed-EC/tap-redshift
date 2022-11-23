@@ -58,7 +58,7 @@ def discover_catalog(conn, db_schema):
 
     table_query = """SELECT table_name, table_type
                        FROM INFORMATION_SCHEMA.Tables
-                      WHERE table_schema = %s"""
+                      WHERE table_schema = %s AND table_type = 'VIEW'"""
 
     table_specs = select_all(conn, table_query, query_params)
 
@@ -68,7 +68,7 @@ def discover_catalog(conn, db_schema):
                         JOIN INFORMATION_SCHEMA.Columns c
                           ON c.table_name = t.table_name
                          AND c.table_schema = t.table_schema
-                       WHERE t.table_schema = %s
+                       WHERE t.table_schema = %s AND t.table_type = 'VIEW'
                     ORDER BY c.table_name, c.ordinal_position"""
 
     column_specs = select_all(conn, column_query, query_params)
