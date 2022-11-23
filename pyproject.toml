@@ -6,7 +6,7 @@ authors = ["data.world"]
 classifiers = ["Programming Language :: Python :: 3 :: Only"]
 
 [tool.poetry.dependencies]
-python = "~3.7"
+python = "^3.7"
 attrs = "18.2.0"
 pendulum = "1.2.0"
 singer-python = "5.0.4"
